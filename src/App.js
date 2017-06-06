@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import axios from 'axios';
 const C3Chart = require("c3-react");
+const moment = require('moment');
 
 let data = [
   {
@@ -12,6 +14,7 @@ let data = [
     ]
   },
   {
+    // This is not being displayed
     key: "dataSource2",
     values: [
       {label: "X", value: 7},
@@ -20,7 +23,7 @@ let data = [
   }
 ];
 
-let type = "bar" // {"line","bar","pie", "multiBar","lineBar"}
+let type = "line" // {"line","bar","pie", "multiBar","lineBar"}
 
 let options = {
   padding: {
@@ -46,7 +49,37 @@ let options = {
 };
 
 class App extends Component {
+    
+    constructor(){
+      super();
+          this.state = {
+              songs: []
+          }
+    }
+
+    componentWillMount(){
+      let that = this;
+      let requestedDate = moment().format('MM-DD-YY');
+      requestedDate = moment().format('MM-DD-YY');
+      axios.get('https://songsranking-api-gfcannon.c9users.io/songs/' + requestedDate)
+        .then(function(result){
+          console.log('result', result);
+          let json = result.data;
+          let i;
+          let songNames = [];
+          for (i=0;i<json.length;i++) {
+            songNames.push(json[i].songName);
+          }
+          console.log(songNames);
+          that.setState({songs:songNames});
+        })
+    }
+
+
   render() {
+    this.songsList = this.state.songs.map((songs, index) => {
+        return <li key={index} > {songs}  </li> })
+    
     return (
 
       <div className="App">
@@ -57,11 +90,14 @@ class App extends Component {
         </div>
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <h2>Dat Straight Fire</h2>
         </div>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          Today's Top Tracks
         </p>
+        <ol>
+            {this.songsList}
+        </ol>
           <C3Chart data={data} type={type} options={options}/>
       </div>
     );
