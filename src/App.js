@@ -2,51 +2,8 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
-const C3Chart = require("c3-react");
+import {NavLink} from 'react-router-dom';
 const moment = require('moment');
-
-let data = [
-  {
-    key: "dataSource1",
-    values: [
-      {label: "A", value: 3},
-      {label: "B", value: 4}
-    ]
-  },
-  {
-    // This is not being displayed
-    key: "dataSource2",
-    values: [
-      {label: "X", value: 7},
-      {label: "Y", value: 8}
-    ]
-  }
-];
-
-let type = "line" // {"line","bar","pie", "multiBar","lineBar"}
-
-let options = {
-  padding: {
-    top: 20,
-    bottom: 20,
-    left: 40,
-    right: 10
-  },
-  size: {
-    width: 800,
-    height: 600
-  },
-  labels: true,
-  axisLabel: {
-    x: "product",
-    y: "quantity"
-  },
-  onClick: function(d) {
-    let categories = this.categories(); //c3 function, get categorical labels
-    console.log(d);
-    console.log("you clicked {" + d.name + ": " + categories[d.x] + ": " + d.value + "}");
-  }
-};
 
 class App extends Component {
     
@@ -78,7 +35,7 @@ class App extends Component {
 
   render() {
     this.songsList = this.state.songs.map((songs, index) => {
-        return <li key={index} > {songs}  </li> })
+        return <li key={index} ><NavLink to={"/songchart/" + songs}> {songs}  </NavLink></li> })
     
     return (
 
@@ -98,7 +55,6 @@ class App extends Component {
         <ol>
             {this.songsList}
         </ol>
-          <C3Chart data={data} type={type} options={options}/>
       </div>
     );
   }
