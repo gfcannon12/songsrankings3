@@ -11,7 +11,7 @@ function lineChart (trackName, dataArray) {
     }
     ];
 
-    let type = "line" // {"line","bar","pie", "multiBar","lineBar"}
+    let type = "bar" // {"line","bar","pie", "multiBar","lineBar"}
 
     let options = {
         padding: {
