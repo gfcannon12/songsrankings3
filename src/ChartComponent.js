@@ -51,7 +51,7 @@ export default class ChartComponent extends Component {
         let that = this;
         let pathname = this.props.location.pathname;
         let song = pathname.substring(11);
-        axios.get('https://songsranking-api-gfcannon.c9users.io/songs/byname/' + song)
+        axios.get('https://songs-rankings-api.herokuapp.com/songs/byname/' + song)
             .then(function(result){
                 console.log('result', result);
                 let json = result.data;

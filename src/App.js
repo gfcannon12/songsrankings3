@@ -18,7 +18,7 @@ class App extends Component {
       let that = this;
       let requestedDate = moment().format('MM-DD-YY');
       requestedDate = moment().format('MM-DD-YY');
-      axios.get('https://songsranking-api-gfcannon.c9users.io/songs/' + requestedDate)
+      axios.get('https://songs-rankings-api.herokuapp.com/songs/' + requestedDate)
         .then(function(result){
           console.log('result', result);
           let json = result.data;
