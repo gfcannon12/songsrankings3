@@ -5,7 +5,7 @@
   "dependencies": {
     "axios": "^0.16.2",
     "c3": "^0.4.12",
-    "c3-react": "^0.1.13",
+    "c3-react": "gfcannon12/c3-react",
     "cron": "^1.2.1",
     "moment": "^2.18.1",
     "moment-timezone": "^0.5.13",
