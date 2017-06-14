@@ -3,6 +3,10 @@ import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
 import {NavLink} from 'react-router-dom';
+
+const c3css = require("c3/c3.css");
+const d3js = require("d3/d3.min.js");
+const c3js = require("c3/c3.min.js");
 const moment = require('moment');
 
 class App extends Component {
@@ -41,9 +45,9 @@ class App extends Component {
 
       <div className="App">
         <div>
-          <link href="../node_modules/c3/c3.css" rel="stylesheet"></link>
-          <script src="../node_modules/d3/d3.min.js" charset="utf-8"></script>
-          <script src="../node_modules/c3/c3.min.js"></script>
+          <link href={c3css} rel="stylesheet"></link>
+          <script src={d3js} charset="utf-8"></script>
+          <script src={c3js}></script>
         </div>
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
