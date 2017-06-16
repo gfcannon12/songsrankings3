@@ -3,17 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "axios": "^0.16.2",
-    "c3": "^0.4.12",
-    "c3-react": "git://github.com/gfcannon12/c3-react.git",
-    "cron": "^1.2.1",
-    "moment": "^2.18.1",
-    "moment-timezone": "^0.5.13",
-    "mongoose": "^4.10.4",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "react-router-dom": "^4.1.1",
-    "request": "^2.81.0"
   },
   "devDependencies": {
     "react-scripts": "1.0.7"
