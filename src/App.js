@@ -52,9 +52,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Dat Straight Fire</h2>
         </div>
-        <p className="App-intro">
-          Today's Top Tracks
-        </p>
+        <h3>Today's Top Tracks</h3><br></br>
         <table>
           <thead>
             <tr>

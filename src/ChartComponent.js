@@ -11,7 +11,7 @@ function lineChart (trackName, dataArray) {
     }
     ];
 
-    let type = "bar" // {"line","bar","pie", "multiBar","lineBar"}
+    let type = "line" // {"line","bar","pie", "multiBar","lineBar"}
 
     let options = {
         padding: {
@@ -21,8 +21,7 @@ function lineChart (trackName, dataArray) {
             right: 10
         },
         size: {
-            width: 800,
-            height: 600
+            height: 550
         },
         labels: true,
         axisLabel: {
@@ -77,8 +76,8 @@ export default class ChartComponent extends Component {
         
         return(
             <div>
-                <h1>{this.state.songName}</h1>
-                <h2>iTunes Chart History</h2>
+                <h2>&nbsp;&nbsp;&nbsp;{this.state.songName}</h2>
+                <h3>&nbsp;&nbsp;&nbsp;iTunes Chart History</h3>
                 {c3JSX}
             </div>
         )
