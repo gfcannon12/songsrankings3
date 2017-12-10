@@ -14,7 +14,7 @@ class App extends Component {
     constructor(){
       super();
           this.state = {
-              songs: []
+              songData: []
           }
     }
 
@@ -25,28 +25,27 @@ class App extends Component {
       axios.get('https://songs-rankings-api.herokuapp.com/songs/' + requestedDate)
         .then(function(result){
           console.log('result', result);
-          let json = result.data;
-          let i;
-          let songNames = [];
-          for (i=0;i<json.length;i++) {
-            songNames.push(json[i].songName);
-          }
-          console.log(songNames);
-          that.setState({songs:songNames});
+          that.setState({songData: result.data})
         })
     }
 
 
   render() {
-    this.songsList = this.state.songs.map((songs, index) => {
-        return <li key={index} ><NavLink to={"/songchart/" + songs}> {songs}  </NavLink></li> })
+    this.songsList = this.state.songData.map((songData, index) => {
+      return <tr key={index} >
+                <td>{index + 1}</td>
+                <td><NavLink to={"/songchart/" + songData.songName}> {songData.songName}</NavLink></td>
+                <td>{songData.artist}</td>
+                <td>{songData.genre}</td>
+              </tr>
+    });
     
     return (
 
       <div className="App">
         <div>
           <link href={c3css} rel="stylesheet"></link>
-          <script src={d3js} charset="utf-8"></script>
+          <script src={d3js} charSet="utf-8"></script>
           <script src={c3js}></script>
         </div>
         <div className="App-header">
@@ -56,9 +55,16 @@ class App extends Component {
         <p className="App-intro">
           Today's Top Tracks
         </p>
-        <ol>
-            {this.songsList}
-        </ol>
+        <table>
+          <thead>
+            <tr>
+              <td>Rank</td>Song<td>Artist</td><td>Genre</td>
+            </tr>
+          </thead>
+          <tbody>
+            {this.songsList} 
+          </tbody>         
+        </table>
       </div>
     );
   }

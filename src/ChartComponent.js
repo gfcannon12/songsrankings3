@@ -58,7 +58,9 @@ export default class ChartComponent extends Component {
                 let i;
                 let dataPoints = [];
                 for (i=0;i<json.length;i++) {
-                    dataPoints[i] = {label: json[i].date, value: json[i].rank};             
+                    if (json[i-1] && json[i].date === json[i - 1].date ) {
+                        console.log(`Appeared on the chart twice on ${json[i].date}`);
+                    } else dataPoints[i] = {label: json[i].date, value: json[i].rank};             
                 }
                 console.log('dataPoints', dataPoints);
                 let lineChartData = lineChart(song, dataPoints);
