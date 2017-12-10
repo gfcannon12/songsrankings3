@@ -76,7 +76,7 @@ export default class ChartComponent extends Component {
         
         return(
             <div>
-                <h2>&nbsp;&nbsp;&nbsp;{this.state.songName}</h2>
+                <h2>&nbsp;&nbsp;{this.state.songName}</h2>
                 <h3>&nbsp;&nbsp;&nbsp;iTunes Chart History</h3>
                 {c3JSX}
             </div>
