@@ -5,7 +5,7 @@ import axios from 'axios';
 import {NavLink} from 'react-router-dom';
 
 const c3css = require("c3/c3.css");
-const d3js = require("d3/d3.min.js");
+const d3js = require("d3/dist/d3.min.js");
 const c3js = require("c3/c3.min.js");
 const moment = require('moment');
 
@@ -56,7 +56,7 @@ class App extends Component {
         <table>
           <thead>
             <tr>
-              <td>Rank</td>Song<td>Artist</td><td>Genre</td>
+              <td>Rank</td><td>Song</td><td>Artist</td><td>Genre</td>
             </tr>
           </thead>
           <tbody>
