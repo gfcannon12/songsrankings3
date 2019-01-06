@@ -16,7 +16,7 @@ function lineChart (trackName, dataArray) {
     let options = {
         padding: {
             top: 20,
-            bottom: 20,
+            bottom: 50,
             left: 40,
             right: 10
         },
@@ -55,12 +55,20 @@ export default class ChartComponent extends Component {
                 console.log('result', result);
                 let json = result.data;
                 let i;
-                let dataPoints = [];
+                const dataPoints = [];
                 for (i=0;i<json.length;i++) {
                     if (json[i-1] && json[i].date === json[i - 1].date ) {
                         console.log(`Appeared on the chart twice on ${json[i].date}`);
-                    } else dataPoints[i] = {label: json[i].date, value: json[i].rank};             
+                    } else {
+                        const dateArr = json[i].date.split('-');
+                        dateArr[2] = '20' + dateArr[2];
+                        const dateObj = new Date(parseInt(dateArr[2], 10), parseInt(dateArr[0], 10) - 1, parseInt(dateArr[1], 10));
+                        dataPoints[i] = {label: json[i].date, value: json[i].rank, date: dateObj};
+                    }             
                 }
+                dataPoints.sort(function(a,b){
+                    return a.date - b.date;
+                })
                 console.log('dataPoints', dataPoints);
                 let lineChartData = lineChart(song, dataPoints);
                 that.setState({c3: lineChartData});
